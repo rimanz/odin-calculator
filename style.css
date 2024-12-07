@@ -1,0 +1,66 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+main {
+    width: 100%;
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shell {
+    width: 240px;
+    border: 1px solid;
+    padding: .5rem .25rem;
+    border-radius: 5px;
+}
+
+.display {
+    background-color: grey;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    text-align: right;
+    height: 3rem;
+    border: 4px solid black;
+    margin-bottom: .5rem;
+}
+
+.keypad {
+    height: 200px;
+    display: flex;
+    flex: auto;
+    flex-wrap: wrap;
+    gap: 2%;
+    border-radius: 15px;
+}
+
+.key {
+    flex-basis: calc(94% / 4);
+    height: 18%;
+}
+
+.key:nth-child(17) {
+    /* Make the button twice as large in width */
+    flex-basis: calc((94% / 4) * 2 + 2%);
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+footer {
+    height: 5vh;
+}
+
+footer p {
+    font-size: .67rem;
+    text-align: center;
+}
