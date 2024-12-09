@@ -42,7 +42,7 @@ function handleClick(event) {
             // Perform some action according to the button.
             break;
         case 'number':
-            // Append Number to the display.
+            addToDisplay(keyValue);
             break;
         case 'operator':
             /*  if both operands exist:
@@ -60,4 +60,9 @@ function handleClick(event) {
             */
             break;
     }
+}
+
+function addToDisplay(digit) {
+    console.log(display.textContent);
+    display.textContent = Number(display.textContent + digit);
 }
