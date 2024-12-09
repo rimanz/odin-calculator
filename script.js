@@ -41,7 +41,6 @@ function handleClick(event) {
     const key = event.target;
     const keyValue = key.textContent;
     const keyType = key.getAttribute('data-key-type');
-    console.log(key, keyValue, keyType);
 
     switch (keyType) {
         case 'action':
@@ -61,19 +60,6 @@ function handleClick(event) {
             addToDisplay(keyValue);
             break;
         case 'operator':
-            /*  if both operands exist:
-                    perform operation based on previous operator value.
-                    and display the value
-                    and update first operand with display value.
-                    update operator with keyValue
-                    clear second operand
-                else if only first operand exists:
-                    update operator with keyValue
-                    update second operand with display value
-                else if no operands defined:
-                    update first operand with display value
-                    update operator with keyValue
-            */
             if ((calculator.a !== null) && (calculator.b !== null)) {
                 let result = calculator.operate();
                 display.textContent = result;
