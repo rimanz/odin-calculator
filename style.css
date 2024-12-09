@@ -25,12 +25,13 @@ main {
 
 .display {
     background-color: grey;
-    font-size: 2.5rem;
+    font-size: 2.4rem;
     line-height: 3rem;
     text-align: right;
     height: 3rem;
     border: 4px solid black;
     margin-bottom: .5rem;
+    overflow: hidden;
 }
 
 .keypad {
