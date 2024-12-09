@@ -74,6 +74,19 @@ function handleClick(event) {
                     update first operand with display value
                     update operator with keyValue
             */
+            if ((calculator.a !== null) && (calculator.b !== null)) {
+                let result = calculator.operate();
+                display.textContent = result;
+                calculator.a = result;
+                calculator.b = null;
+                calculator.operator = keyValue;
+            } else if ((calculator.a !== null) && (calculator.b === null)) {
+                calculator.b = display.textContent;
+                calculator.operator = keyValue;
+            } else if ((calculator.a === null) && (calculator.b === null)) {
+                calculator.a = display.textContent;
+                calculator.operator = keyValue;
+            }
             break;
     }
 }
