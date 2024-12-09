@@ -22,6 +22,12 @@ const calculator = new function() {
                 return this.divide();
         }
     }
+
+    this.reset = () => {
+        this.a = null;
+        this.b = null;
+        this.operator = null;
+    }
 }
 
 // DOM Elements and Event Listeners:
@@ -39,7 +45,17 @@ function handleClick(event) {
 
     switch (keyType) {
         case 'action':
-            // Perform some action according to the button.
+            switch (keyValue) {
+                case 'AC':
+                    reset();
+                    break;
+                case 'C':
+                    clearDisplay();
+                    break;
+                case '←':
+                    clearLastDigit();
+                    break;
+            }
             break;
         case 'number':
             addToDisplay(keyValue);
@@ -65,4 +81,19 @@ function handleClick(event) {
 function addToDisplay(digit) {
     console.log(display.textContent);
     display.textContent = Number(display.textContent + digit);
+}
+
+function clearDisplay() {
+    display.textContent = 0;
+}
+
+function clearLastDigit() {
+    const length = display.textContent.length;
+    display.textContent = display.textContent.slice(0, length-1);
+    if (display.textContent === '') display.textContent = 0;
+}
+
+function reset() {
+    calculator.reset();
+    clearDisplay();
 }
