@@ -25,3 +25,15 @@ const calculator = {
         this.b = null;
     }
 }
+
+// DOM elements and Event listeners:
+const display = document.querySelector('.display');
+const keypad = document.querySelector('.keypad');
+
+keypad.addEventListener('click', handleClick);
+
+// Function declarations:
+function handleClick(event) {
+    const key = event.target;
+    const value = key.textContent;
+}
