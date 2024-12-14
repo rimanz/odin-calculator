@@ -35,5 +35,27 @@ keypad.addEventListener('click', handleClick);
 // Function declarations:
 function handleClick(event) {
     const key = event.target;
+    const keyType = key.getAttribute('data-key-type');
     const value = key.textContent;
+
+    switch (keyType) {
+        case 'action':
+            // Work-in-Progress
+            break;
+        case 'dot':
+            // Work-in-Progress
+        case 'number':
+            updateDisplay(value);
+        case 'operator':
+            // Work-in-Progress
+    }
+}
+
+function updateDisplay(content) {
+    // Work-in-Progress
+    if (calculator.a === calculator.displayValue) {
+        display.textContent = content;
+    } else {
+        display.textContent = Number(display.textContent + content);
+    }
 }
