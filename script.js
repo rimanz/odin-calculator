@@ -23,6 +23,12 @@ const calculator = {
         this.displayValue = result;
         this.a = result;
         this.b = null;
+    },
+    reset() {
+        this.a = null;
+        this.b = null;
+        this.displayValue = 0;
+        this.operator = null;
     }
 }
 
@@ -40,7 +46,6 @@ function handleClick(event) {
 
     switch (keyType) {
         case 'action':
-            // Work-in-Progress
             break;
         case 'dot':
             // Work-in-Progress
