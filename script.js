@@ -46,6 +46,20 @@ function handleClick(event) {
 
     switch (keyType) {
         case 'action':
+            switch (value) {
+                case 'AC':
+                    display.textContent = 0;
+                    calculator.reset();
+                    break;
+                case 'C':
+                    display.textContent = 0;
+                    break;
+                case '←':
+                    let content = display.textContent;
+                    display.textContent = content.slice(0, content.length - 1);
+                    if(display.textContent === '') display.textContent = 0;
+                    break;
+            }
             break;
         case 'dot':
             // Work-in-Progress
