@@ -4,6 +4,7 @@ const calculator = {
     b: null,    // second operand
     operator: null,
     displayValue: 0,
+
     operate() {
         let result;
         switch (this.operator) {
@@ -24,6 +25,7 @@ const calculator = {
         this.a = result;
         this.b = null;
     },
+
     reset() {
         this.a = null;
         this.b = null;
@@ -42,29 +44,16 @@ keypad.addEventListener('click', handleClick);
 function handleClick(event) {
     const key = event.target;
     const keyType = key.getAttribute('data-key-type');
-    const value = key.textContent;
+    const keyLabel = key.textContent;
 
     switch (keyType) {
         case 'action':
-            switch (value) {
-                case 'AC':
-                    display.textContent = 0;
-                    calculator.reset();
-                    break;
-                case 'C':
-                    display.textContent = 0;
-                    break;
-                case '←':
-                    let content = display.textContent;
-                    display.textContent = content.slice(0, content.length - 1);
-                    if(display.textContent === '') display.textContent = 0;
-                    break;
-            }
+            handleActionKeys(keyLabel);
             break;
         case 'dot':
             // Work-in-Progress
         case 'number':
-            updateDisplay(value);
+            updateDisplay(keyLabel);
         case 'operator':
             // Work-in-Progress
     }
@@ -76,5 +65,22 @@ function updateDisplay(content) {
         display.textContent = content;
     } else {
         display.textContent = Number(display.textContent + content);
+    }
+}
+
+function handleActionKeys(label) {
+    switch (label) {
+        case 'AC':
+            display.textContent = 0;
+            calculator.reset();
+            break;
+        case 'C':
+            display.textContent = 0;
+            break;
+        case '←':
+            let content = display.textContent;
+            display.textContent = content.slice(0, content.length - 1);
+            if(display.textContent === '') display.textContent = 0;
+            break;
     }
 }
