@@ -55,8 +55,10 @@ function handleClick(event) {
             break;
         case 'number':
             updateDisplay(keyLabel);
+            break;
         case 'operator':
-            // Work-in-Progress
+            handleOperators(keyLabel);
+            break;
     }
 }
 
@@ -89,5 +91,39 @@ function handleActionKeys(label) {
 function handleDot() {
     if(!(display.textContent.includes('.'))) {
         display.textContent += '.';
+    }
+}
+
+function handleOperators(label) {
+    let operator;
+    switch (label) {
+        case '+':
+            operator = '+';
+            break;
+        case '−':
+            operator = '-';
+            break;
+        case '×':
+            operator = '*';
+            break;
+        case '÷':
+            operator = '/';
+            break;
+    }
+
+    if(calculator.a === null && calculator.b === null)  {
+        calculator.a = Number(display.textContent);
+        calculator.displayValue = calculator.a;
+        calculator.operator = operator;
+        console.log(calculator);
+    } else if (calculator.a !== null) {
+        calculator.b = Number(display.textContent);
+        calculator.operate();
+        calculator.operator = operator  ;
+        display.textContent = calculator.displayValue;
+        console.log(calculator);
+    } else {
+        display.textContent = 'Error!';
+        console.log(calculator);
     }
 }
