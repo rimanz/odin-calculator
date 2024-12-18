@@ -51,7 +51,8 @@ function handleClick(event) {
             handleActionKeys(keyLabel);
             break;
         case 'dot':
-            // Work-in-Progress
+            handleDot();
+            break;
         case 'number':
             updateDisplay(keyLabel);
         case 'operator':
@@ -82,5 +83,11 @@ function handleActionKeys(label) {
             display.textContent = content.slice(0, content.length - 1);
             if(display.textContent === '') display.textContent = 0;
             break;
+    }
+}
+
+function handleDot() {
+    if(!(display.textContent.includes('.'))) {
+        display.textContent += '.';
     }
 }
