@@ -3,33 +3,31 @@ const calculator = {
     a: null,    // first operand
     b: null,    // second operand
     operator: null,
-    displayValue: 0,
+    result: 0,
 
     operate() {
-        let result;
         switch (this.operator) {
             case '+':
-                result = this.a + this.b;
+                this.result = this.a + this.b;
                 break;
             case '-':
-                result = this.a - this.b;
+                this.result = this.a - this.b;
                 break;
             case '*':
-                result = this.a * this.b;
+                this.result = this.a * this.b;
                 break;
             case '/':
-                result = this.a / this.b;
+                this.result = this.a / this.b;
                 break;
         }
-        this.displayValue = result;
-        this.a = result;
+        this.a = this.result;
         this.b = null;
     },
 
     reset() {
         this.a = null;
         this.b = null;
-        this.displayValue = 0;
+        this.result = 0;
         this.operator = null;
     }
 }
@@ -63,8 +61,7 @@ function handleClick(event) {
 }
 
 function updateDisplay(content) {
-    // Work-in-Progress
-    if (calculator.a === calculator.displayValue) {
+    if (calculator.a === calculator.result) {
         display.textContent = content;
     } else {
         display.textContent = Number(display.textContent + content);
@@ -113,14 +110,14 @@ function handleOperators(label) {
 
     if(calculator.a === null && calculator.b === null)  {
         calculator.a = Number(display.textContent);
-        calculator.displayValue = calculator.a;
+        calculator.result = calculator.a;
         calculator.operator = operator;
         console.log(calculator);
     } else if (calculator.a !== null) {
         calculator.b = Number(display.textContent);
         calculator.operate();
         calculator.operator = operator  ;
-        display.textContent = calculator.displayValue;
+        display.textContent = calculator.result;
         console.log(calculator);
     } else {
         display.textContent = 'Error!';
