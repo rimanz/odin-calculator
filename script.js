@@ -49,8 +49,6 @@ function handleClick(event) {
             handleActionKeys(keyLabel);
             break;
         case 'dot':
-            handleDot();
-            break;
         case 'number':
             updateDisplay(keyLabel);
             break;
@@ -62,9 +60,27 @@ function handleClick(event) {
 
 function updateDisplay(content) {
     if (calculator.a === calculator.result) {
-        display.textContent = content;
+        if (content === '.') {
+            handleDot();
+        } else {
+            display.textContent = content;
+        }
     } else {
-        display.textContent = Number(display.textContent + content);
+        if (content === '.') {
+            handleDot();
+        } else {
+            display.textContent = Number(display.textContent + content);
+        }
+    }
+}
+
+function handleDot() {
+    if(!(display.textContent.includes('.'))) {
+        if (display.textContent == 0) {
+            display.textContent += '.' ;
+        } else {
+            display.textContent += '0.';
+        }
     }
 }
 
@@ -82,12 +98,6 @@ function handleActionKeys(label) {
             display.textContent = content.slice(0, content.length - 1);
             if(display.textContent === '') display.textContent = 0;
             break;
-    }
-}
-
-function handleDot() {
-    if(!(display.textContent.includes('.'))) {
-        display.textContent += '.';
     }
 }
 
