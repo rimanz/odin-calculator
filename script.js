@@ -49,8 +49,6 @@ function handleClick(event) {
             handleActionKeys(keyLabel);
             break;
         case 'dot':
-            handleDot();
-            break;
         case 'number':
             updateDisplay(keyLabel);
             break;
@@ -62,9 +60,15 @@ function handleClick(event) {
 
 function updateDisplay(content) {
     if (calculator.a === calculator.result) {
+        if (content === '.') content = '0.';
         display.textContent = content;
+        calculator.result = display.textContent;
     } else {
-        display.textContent = Number(display.textContent + content);
+        if (content === '.') {
+            handleDot();
+        } else {
+            display.textContent = Number(display.textContent + content);
+        }
     }
 }
 
