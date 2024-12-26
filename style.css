@@ -1,6 +1,7 @@
 *, *::after, *::before {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 :root {
@@ -20,7 +21,10 @@ main {
     width: 240px;
     border: 1px solid;
     padding: .5rem .25rem;
+    border: 2px outset;
     border-radius: 5px;
+    background-color: whitesmoke;
+    box-shadow: 5px 5px 22px 2px silver;
 }
 
 .display {
@@ -46,15 +50,36 @@ main {
 .key {
     flex-basis: calc(94% / 4);
     height: 18%;
+    font-weight: 600;
+    background-color: whitesmoke;
+    border-color: silver;
+    border-radius: 4px;
+}
+
+.key:hover {
+    opacity: 80%;
+    border-color: silver;
+}
+
+.key:active {
+    font-weight: 400;
 }
 
 .key:nth-child(17) {
-    /* Make the button twice as large in width */
+    /* Make the zero button twice as large in width */
     flex-basis: calc((94% / 4) * 2 + 2%);
 }
 
-.hidden {
-    visibility: hidden;
+.action-key {
+    background-color: salmon;
+}
+
+.operator-key {
+    background-color: lightsalmon;
+}
+
+.dot-key {
+    background-color: darkgray;
 }
 
 footer {
