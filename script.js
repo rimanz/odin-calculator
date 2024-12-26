@@ -59,15 +59,17 @@ function handleClick(event) {
 }
 
 function updateDisplay(content) {
-    if (calculator.a === calculator.result) {
-        if (content === '.') content = '0.';
-        display.textContent = content;
-        calculator.result = display.textContent;
-    } else {
-        if (content === '.') {
-            handleDot();
+    if (display.textContent.length < 12) {
+        if (calculator.a === calculator.result) {
+            if (content === '.') content = '0.';
+            display.textContent = content;
+            calculator.result = display.textContent;
         } else {
-            display.textContent = Number(display.textContent + content);
+            if (content === '.') {
+                handleDot();
+            } else {
+                display.textContent = Number(display.textContent + content);
+            }
         }
     }
 }
